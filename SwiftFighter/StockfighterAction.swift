@@ -67,7 +67,7 @@ enum HTTPMetod : String
 class StockfighterAction
 {
     let baseUrl : NSURL = NSURL(string: "https://api.stockfighter.io")!
-    let apiKey = ""
+    var apiKey = ""
     var httpMethod = HTTPMetod.get
     
     func url() -> NSURL

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3570FEE1CBB0D7E00B8395B /* apikey.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3570FED1CBB0D7E00B8395B /* apikey.txt */; };
 		D39515271CB9CCF200DE181C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39515261CB9CCF200DE181C /* AppDelegate.swift */; };
 		D39515291CB9CCF200DE181C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39515281CB9CCF200DE181C /* Assets.xcassets */; };
 		D395152C1CB9CCF200DE181C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D395152A1CB9CCF200DE181C /* MainMenu.xib */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D3570FED1CBB0D7E00B8395B /* apikey.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apikey.txt; sourceTree = "<group>"; };
 		D39515231CB9CCF200DE181C /* SwiftFighter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFighter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D39515261CB9CCF200DE181C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D39515281CB9CCF200DE181C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				D39515351CB9CD6200DE181C /* StockfighterAction.swift */,
 				D39515391CB9D45800DE181C /* Quote.swift */,
 				D39515361CB9CD6200DE181C /* WebSocket.swift */,
+				D3570FED1CBB0D7E00B8395B /* apikey.txt */,
 				D39515281CB9CCF200DE181C /* Assets.xcassets */,
 				D395152A1CB9CCF200DE181C /* MainMenu.xib */,
 				D395152D1CB9CCF200DE181C /* Info.plist */,
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D39515291CB9CCF200DE181C /* Assets.xcassets in Resources */,
+				D3570FEE1CBB0D7E00B8395B /* apikey.txt in Resources */,
 				D395152C1CB9CCF200DE181C /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +291,7 @@
 				D39515321CB9CCF200DE181C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

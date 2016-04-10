@@ -15,11 +15,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate, NSTable
 
     @IBOutlet weak var tableView: NSTableView!
     
+    var apiKey : String = ""
     var quotes: Array<Quote> = []
     
     func applicationDidFinishLaunching(aNotification: NSNotification)
     {
-        // Insert code here to initialize your application
+        let path = NSBundle.mainBundle().pathForResource("apikey", ofType: "txt")!
+        apiKey = try! String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
     }
 
     func applicationWillTerminate(aNotification: NSNotification)
