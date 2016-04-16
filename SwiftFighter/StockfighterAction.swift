@@ -18,6 +18,7 @@ enum dictionaryKeys : String
     case direction = "direction"
     case originalQty = "originalQty"
     
+    case quote = "quote"
     case bids = "bids"
     case asks = "asks"
     case bid = "bid"
@@ -38,7 +39,7 @@ enum dictionaryKeys : String
     case open = "open"
     case isBuy = "isBuy"
     
-    case lastPrice = "last"
+    case last = "last"
     case lastSize = "lastSize"
     case lastTrade = "lastTrade"
     case quoteTime = "quoteTime"
@@ -236,14 +237,12 @@ class StockfighterTicker : StockfighterAction
         self.venue = venue
     }
     
-    override func go()
+    func openSocket(messageProcessor:(data : Any)->())
     {
         let ws = WebSocket("wss://api.stockfighter.io/ob/api/ws/\(self.account)/venues/\(self.venue)/tickertape")
-        ws.event.message = { (msg) in
-            if let text = msg as? String {
-                print(text)
-            }
-        }
+        
+        ws.event.message = messageProcessor
+        
         ws.event.error = { error in
              print(error)
         }
@@ -251,4 +250,33 @@ class StockfighterTicker : StockfighterAction
         ws.open()
     }
 }
+
+class StockfighterOrderBook : StockfighterAction
+{
+    var account = ""
+    var venue = ""
+    var stock = ""
+    
+    init (account : String, venue : String, stock : String)
+    {
+        super.init()
+        self.account = account
+        self.venue = venue
+        self.stock = stock
+    }
+    
+    func openSocket(messageProcessor:(data : Any)->())
+    {
+        let ws = WebSocket("wss://api.stockfighter.io/ob/api/ws/\(self.account)/venues/\(self.venue)/tickertape/stocks/\(self.stock)")
+        
+        ws.event.message = messageProcessor
+        
+        ws.event.error = { error in
+            print(error)
+        }
+        
+        ws.open()
+    }
+}
+
 

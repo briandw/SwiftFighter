@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D34B01301CC2BC020036EC0B /* PlotKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D34B012F1CC2BC020036EC0B /* PlotKit.framework */; };
+		D34B01311CC2CCA00036EC0B /* PlotKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D34B012F1CC2BC020036EC0B /* PlotKit.framework */; };
+		D34B01321CC2CCA00036EC0B /* PlotKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D34B012F1CC2BC020036EC0B /* PlotKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3570FEE1CBB0D7E00B8395B /* apikey.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3570FED1CBB0D7E00B8395B /* apikey.txt */; };
+		D3570FF01CBB2EC300B8395B /* StockCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3570FEF1CBB2EC300B8395B /* StockCellView.xib */; };
+		D3570FF21CBB2EC900B8395B /* StockCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3570FF11CBB2EC900B8395B /* StockCellView.swift */; };
 		D39515271CB9CCF200DE181C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39515261CB9CCF200DE181C /* AppDelegate.swift */; };
 		D39515291CB9CCF200DE181C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39515281CB9CCF200DE181C /* Assets.xcassets */; };
 		D395152C1CB9CCF200DE181C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D395152A1CB9CCF200DE181C /* MainMenu.xib */; };
@@ -17,8 +22,25 @@
 		D395153A1CB9D45800DE181C /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39515391CB9D45800DE181C /* Quote.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D34B01331CC2CCA00036EC0B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D34B01321CC2CCA00036EC0B /* PlotKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		D34B012F1CC2BC020036EC0B /* PlotKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PlotKit.framework; sourceTree = "<group>"; };
 		D3570FED1CBB0D7E00B8395B /* apikey.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apikey.txt; sourceTree = "<group>"; };
+		D3570FEF1CBB2EC300B8395B /* StockCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockCellView.xib; sourceTree = "<group>"; };
+		D3570FF11CBB2EC900B8395B /* StockCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockCellView.swift; sourceTree = "<group>"; };
 		D39515231CB9CCF200DE181C /* SwiftFighter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFighter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D39515261CB9CCF200DE181C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D39515281CB9CCF200DE181C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D34B01301CC2BC020036EC0B /* PlotKit.framework in Frameworks */,
+				D34B01311CC2CCA00036EC0B /* PlotKit.framework in Frameworks */,
 				D39515341CB9CD1600DE181C /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,7 +93,10 @@
 				D3570FED1CBB0D7E00B8395B /* apikey.txt */,
 				D39515281CB9CCF200DE181C /* Assets.xcassets */,
 				D395152A1CB9CCF200DE181C /* MainMenu.xib */,
+				D3570FF11CBB2EC900B8395B /* StockCellView.swift */,
+				D3570FEF1CBB2EC300B8395B /* StockCellView.xib */,
 				D395152D1CB9CCF200DE181C /* Info.plist */,
+				D34B012F1CC2BC020036EC0B /* PlotKit.framework */,
 			);
 			path = SwiftFighter;
 			sourceTree = "<group>";
@@ -84,6 +111,7 @@
 				D395151F1CB9CCF200DE181C /* Sources */,
 				D39515201CB9CCF200DE181C /* Frameworks */,
 				D39515211CB9CCF200DE181C /* Resources */,
+				D34B01331CC2CCA00036EC0B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D39515291CB9CCF200DE181C /* Assets.xcassets in Resources */,
+				D3570FF01CBB2EC300B8395B /* StockCellView.xib in Resources */,
 				D3570FEE1CBB0D7E00B8395B /* apikey.txt in Resources */,
 				D395152C1CB9CCF200DE181C /* MainMenu.xib in Resources */,
 			);
@@ -145,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3570FF21CBB2EC900B8395B /* StockCellView.swift in Sources */,
 				D395153A1CB9D45800DE181C /* Quote.swift in Sources */,
 				D39515371CB9CD6200DE181C /* StockfighterAction.swift in Sources */,
 				D39515381CB9CD6200DE181C /* WebSocket.swift in Sources */,
@@ -253,6 +283,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SwiftFighter",
+				);
 				INFOPLIST_FILE = SwiftFighter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blarg.SwiftFighter;
@@ -265,6 +299,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SwiftFighter",
+				);
 				INFOPLIST_FILE = SwiftFighter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blarg.SwiftFighter;

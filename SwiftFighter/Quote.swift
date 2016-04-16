@@ -11,88 +11,94 @@ import Foundation
 
 class Quote
 {
-    var symbol : String = ""
     var venue : String = ""
+    var symbol : String = ""
+    
     var bid : Int = 0
-    var ask : Int = 0
     var bidSize : Int = 0
-    var askSize : Int = 0
     var bidDepth : Int = 0
+    
+    var ask : Int = 0
+    var askSize : Int = 0
     var askDepth : Int = 0
+    
     var lastPrice : Int = 0
     var lastSize : Int = 0
     var lastTrade : String = ""
     var quoteTime : String = ""
     
-    init (jsonDictionary : Dictionary <String, Any>)
+    init (json : NSDictionary)
     {
-        self.symbol = String(jsonDictionary["\(dictionaryKeys.symbol)"])
-        self.venue = String(jsonDictionary["\(dictionaryKeys.venue)"])
+        var jsonObject = json["\(dictionaryKeys.symbol)"]
+        if let symbol = jsonObject as? String
+        {
+            self.symbol = symbol
+        }
+            
+        jsonObject = json["\(dictionaryKeys.venue)"]
+        if let venue = jsonObject as? String
+        {
+            self.venue = venue
+        }
+            
+        jsonObject = json["\(dictionaryKeys.bid)"]
+        if let bid = jsonObject as? Int
+        {
+            self.bid = bid
+        }
+        
+        jsonObject = json["\(dictionaryKeys.ask)"]
+        if let ask = jsonObject as? Int
+        {
+            self.ask = ask
+        }
+        
+        jsonObject = json["\(dictionaryKeys.bidSize)"]
+        if let bidSize = jsonObject as? Int
+        {
+            self.bidSize = bidSize
+        }
 
-        if let bidValue = jsonDictionary["\(dictionaryKeys.bid)"] as? Int
+        jsonObject = json["\(dictionaryKeys.askSize)"]
+        if let askSize = jsonObject as? Int
         {
-            self.bid = Int(bidValue)
+            self.askSize = askSize
         }
         
-        if let askValue = jsonDictionary["\(dictionaryKeys.ask)"] as? Int
+        jsonObject = json["\(dictionaryKeys.bidDepth)"]
+        if let bidDepth = jsonObject as? Int
         {
-            self.ask = Int(askValue)
+            self.bidDepth = bidDepth
         }
         
-        if let bidSize = jsonDictionary["\(dictionaryKeys.bidSize)"] as? Int
+        jsonObject = json["\(dictionaryKeys.askDepth)"]
+        if let askDepth = jsonObject as? Int
         {
-            self.bidSize = Int(bidSize)
+            self.askDepth = askDepth
         }
         
-        if let askSize = jsonDictionary["\(dictionaryKeys.askSize)"] as? Int
+        jsonObject = json["\(dictionaryKeys.last)"]
+        if let lastPrice = jsonObject as? Int
         {
-            self.askSize = Int(askSize)
+            self.lastPrice = lastPrice
         }
-        
-        if let bidDepth = jsonDictionary["\(dictionaryKeys.bidDepth)"] as? Int
+            
+        jsonObject = json["\(dictionaryKeys.lastSize)"]
+        if let lastSize = jsonObject as? Int
         {
-            self.bidDepth = Int(bidDepth)
+            self.lastSize = lastSize
         }
-        
-        if let askDepth = jsonDictionary["\(dictionaryKeys.askDepth)"] as? Int
+            
+        jsonObject = json["\(dictionaryKeys.lastTrade)"]
+        if let lastTrade = jsonObject as? String
         {
-            self.askDepth = Int(askDepth)
+            self.lastTrade = lastTrade
         }
-        
-        if let lastPrice = jsonDictionary["\(dictionaryKeys.lastPrice)"] as? Int
+
+        jsonObject = json["\(dictionaryKeys.quoteTime)"]
+        if let quoteTime = jsonObject as? String
         {
-            self.lastPrice = Int(lastPrice)
-        }
-        
-        if let lastSize = jsonDictionary["\(dictionaryKeys.lastSize)"] as? Int
-        {
-            self.lastSize = Int(lastSize)
-        }
-        
-        if let lastTrade = jsonDictionary["\(dictionaryKeys.lastTrade)"] as? String
-        {
-            self.lastTrade = lastTrade;
-        }
-        
-        if let quoteTime = jsonDictionary["\(dictionaryKeys.quoteTime)"] as? String
-        {
-            self.quoteTime = String(quoteTime);
+            self.quoteTime = quoteTime
         }
     }
 }
-
-
-//{ // the below is the same as returned through the REST quote API
-//    "symbol": "FAC",
-//    "venue": "OGEX",
-//    "bid": 5100, // best price currently bid for the stock
-//    "ask": 5125, // best price currently offered for the stock
-//    "bidSize": 392, // aggregate size of all orders at the best bid
-//    "askSize": 711, // aggregate size of all orders at the best ask
-//    "bidDepth": 2748, // aggregate size of *all bids*
-//    "askDepth": 2237, // aggregate size of *all asks*
-//    "last": 5125, // price of last trade
-//    "lastSize": 52, // quantity of last trade
-//    "lastTrade": "2015-07-13T05:38:17.33640392Z", // timestamp of last trade,
-//    "quoteTime": "2015-07-13T05:38:17.33640392Z" // server ts of quote generation
-//}
