@@ -8,6 +8,8 @@
 
 import Foundation
 
+var formatter = NSDateFormatter.init()
+var formatterInit = false
 
 class Quote
 {
@@ -25,10 +27,18 @@ class Quote
     var lastPrice : Int = 0
     var lastSize : Int = 0
     var lastTrade : String = ""
-    var quoteTime : String = ""
+    var quoteTime : NSDate?
+    
     
     init (json : NSDictionary)
     {
+        if (!formatterInit)
+        {
+            formatterInit = true
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            formatter.locale = NSLocale.init(localeIdentifier: "en_US_POSIX")
+        }
+        
         var jsonObject = json["\(dictionaryKeys.symbol)"]
         if let symbol = jsonObject as? String
         {
@@ -98,7 +108,7 @@ class Quote
         jsonObject = json["\(dictionaryKeys.quoteTime)"]
         if let quoteTime = jsonObject as? String
         {
-            self.quoteTime = quoteTime
+           self.quoteTime = formatter.dateFromString(quoteTime)
         }
     }
 }

@@ -20,9 +20,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate, NSTable
     var apiKey : String = ""
     var quotes: Array<Quote> = []
     
-    let account = "STB94136661"
-    let venue = "UROEX"
-    let stock = "LBIM"
+    let account = "IYK11423813"
+    let venue = "BHKTEX"
+    let stock = "OCGI"
     
     func applicationDidFinishLaunching(aNotification: NSNotification)
     {
@@ -61,19 +61,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate, NSTable
     {
         var bid : Array<Point> = [];
         var ask : Array<Point> = [];
-        var x : Double = 0;
         for quote in quotes
         {
-            if (quote.bid > 0)
+            if let time = quote.quoteTime
             {
-                bid.append(Point(x:x, y:Double(quote.bid)))
+                let ts = time.timeIntervalSinceReferenceDate
+                if (quote.bid > 0)
+                {
+                    bid.append(Point(x:ts, y:Double(quote.bid)))
+                }
+                
+                if (quote.ask > 0)
+                {
+                    ask.append(Point(x:ts, y:Double(quote.ask)))
+                }
             }
-            
-            if (quote.ask > 0)
-            {
-                ask.append(Point(x:x, y:Double(quote.ask)))
-            }
-            x += 1
         }
         
         plotView.removeAllPlots();
@@ -152,14 +154,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate, NSTable
     {
         let ticker = StockfighterOrderBook(account: account, venue: venue, stock: stock)
         
-        var buffer: Array<Quote> = []
-        
         ticker.openSocket(
             { (msg) in
                 if let text = msg as? String
                 {
                     if let data = text.dataUsingEncoding(NSUTF8StringEncoding)
                     {
+                        var buffer: Array<Quote> = []
                         do
                         {
                             let jsonObject : AnyObject! = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
@@ -169,11 +170,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate, NSTable
                                 if let quoteDict = jsonDict["\(dictionaryKeys.quote)"] as? NSDictionary
                                 {
                                     buffer.append(Quote.init(json: quoteDict))
-                                    if (buffer.count > 50)
-                                    {
-                                        self.newQuotes(buffer)
-                                        buffer = []
-                                    }
                                 }
                             }
                         }
@@ -181,6 +177,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate, NSTable
                         {
                             print("Error")
                         }
+                        
+                        self.newQuotes(buffer)
                     }
                 }
             }
